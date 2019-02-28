@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 
 function calculateQuadraticEquation(){
     let a = +window.a.value;
@@ -11,11 +11,11 @@ function calculateQuadraticEquation(){
 }
 
 function getResult(a,b,c){
-    let discriminant = (b * b) - (4 * a * c);
+     let discriminant = (b * b) - (4 * a * c);
     
       if(discriminant > 0) {
-        let x1 = (-b + discriminant) / (2 * a);
-        let x2 = (-b - discriminant) / (2 * a);
+        let x1 = (-b + Math.sqrt(discriminant)) / (2 * a);
+        let x2 = (-b - Math.sqrt(discriminant)) / (2 * a);
         let x = [x1,x2];
         console.log(2 + ' roots ' + x);  
         return x;    
@@ -25,6 +25,7 @@ function getResult(a,b,c){
         console.log(1 + ' root ' + x);
     }else {
         console.log('no roots');
+        return null;
     }
 }
 
@@ -38,13 +39,18 @@ function calculateDrinkTask(){
 function askDrink(name,dateOfBirthday){
     let presentYear = new Date().getFullYear();
     let age = presentYear - dateOfBirthday.getFullYear();
+    let result = `Сожалею, ${name} но я не могу вам продать алкоголь. Зато могу предложить вам замечательный клюквенный компот!`
     console.log(`you are ${age} years old.`);
+    
     if (age < 18) {
-    console.log(`Сожалею, ${name}, но я не могу вам продать алкоголь. Зато могу предложить вам замечательный клюквенный компот!`);
+    console.log(result);
+    return result;    
   } else {
-    console.log(`Не желаете ли олд-фэшн, ${name}?`);
+    result = `Не желаете ли олд-фэшн, ${name}?`;
+    console.log(result);
+    return result;  
   }
-    return result;
+    
 }
 
 function calculateAverageRating(){
@@ -56,16 +62,16 @@ function calculateAverageRating(){
 function getAverageMark(marks){
     let avgMarks = 0;
     let totalMarks = 0;
+    let numOfScores = 5;
     
-    if(marks.length > 5) {
+    if(marks.length > numOfScores) {
         console.log(`you have put ${marks.length} subject's scores`);
         marks = marks.slice(0,5);
     }
 
-    for(let i=0;i<marks.length;i++) {
+    for(let i = 0; i < marks.length; i++) {
         totalMarks += marks[i];
     }
-
     avgMarks = totalMarks / marks.length;
     return avgMarks;
 }
