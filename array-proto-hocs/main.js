@@ -1,7 +1,9 @@
 'use strict';
+
 function compareArrays(arr1, arr2) {
-    return JSON.stringify(arr1) === JSON.stringify(arr2) ? true : false;
+    return arr1.length !== arr2.length ? false : arr1.every((element, index) => element === arr2[index]);
 }
+
 compareArrays([8, 1, 2], [8, 1, 2]);
 
 function memoize(fn, limit) {
